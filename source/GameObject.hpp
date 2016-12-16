@@ -9,7 +9,7 @@ struct GameObject{
 	std::string type;
 	unsigned id;
 	GameObject(std::string type_, unsigned team_, int x_, int y_) :
-		x (x_), y{y_}, type{type_}, team{team_}
+		x (x_), y{y_}, type{type_}, team{team_}, id{0}
 	{}
 	v8::Local<v8::Object> getData(v8::Isolate* isolate)
 	{

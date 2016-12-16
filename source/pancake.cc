@@ -6,7 +6,7 @@
 void getData(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
 
-  v8::Local<v8::Array> data = v8::Array::New(isolate, 2);
+  v8::Local<v8::Array> data = v8::Array::New(isolate, 1);
 
   // v8::Local<v8::Object> object1 = v8::Object::New(isolate);
   // object1->Set(v8::String::NewFromUtf8(isolate, "_id_"),

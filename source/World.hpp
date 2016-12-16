@@ -4,7 +4,7 @@
 struct World{
 	static World &getInstance()
 	{
-		static GameObjectFactory goFactory;
+		static World goFactory;
 		return goFactory;
 	}
 	std::vector<std::shared_ptr<GameObject> > objects;
