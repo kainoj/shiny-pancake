@@ -11,19 +11,19 @@ struct Basic : public GameObject {
     x = (int) (x + vx * dt);
     y = (int) (y + vy * dt);
 
-    if (x < 0) {
-      x = 0;
+    if (x < 10) {	// kuleczki odbijaja sie krawedzia
+      x = 10;
       vx = -vx;
-    } else if (x > 500) {
-      x = 500;
+    } else if (x > 490) {
+      x = 490;
       vx = -vx;
     }
 
-    if (y < 0) {
-      y = 0;
+    if (y < 10) {
+      y = 10;
       vy = -vy;
-    } else if (y > 500) {
-      y = 500;
+    } else if (y > 490) {
+      y = 490;
       vy = -vy;
     }
   };
