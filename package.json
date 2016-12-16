@@ -1,0 +1,31 @@
+{
+  "name": "shiny-pancake",
+  "repository": "https://github.com/radekmie/shiny-pancake",
+  "description": "Hackaton!",
+  "version": "1.0.0",
+  "main": "main.js",
+  "contributors": [
+    {
+      "name": "Jakub Szczerbiński",
+      "email": "vszczerbinski@gmail.com"
+    },
+    {
+      "name": "Kamil Listopad",
+      "email": "listopadkamil@gmail.com"
+    },
+    {
+      "name": "Przemek Joniak",
+      "email": "przemko924@gmail.com"
+    },
+    {
+      "name": "Radosław Miernik",
+      "email": "radekmie@gmail.com"
+    }
+  ],
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}

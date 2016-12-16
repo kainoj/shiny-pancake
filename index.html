@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hackaton!</title>
+        <style>
+            body {
+                margin: 0;
+
+                width:  100vh;
+                height: 100vh;
+
+                font-size: 15px;
+
+                background-image: url('assets/sayagata.png');
+            }
+
+            canvas {
+                top:  50%;
+                left: 50%;
+
+                position: absolute;
+
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            path {
+                stroke: #999aa0;
+                opacity: 0.5;
+
+                cursor: pointer;
+
+                stroke-linecap: round;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            path:hover {
+                opacity: 1;
+            }
+
+            svg {
+                top:   1rem;
+                right: 0rem;
+
+                width:  1rem;
+                height: 1rem;
+
+                position: absolute;
+
+                transform: translateX(-50%) translateY(-50%);
+            }
+        </style>
+    </head>
+    <body>
+        <svg viewbox="0 0 4 4">
+            <path d="M0,0 L4,4 M4,0 L0,4" />
+        </svg>
+
+        <canvas></canvas>
+
+        <script>
+            document.querySelector('path').addEventListener('click', () =>
+                require('electron').remote.getCurrentWindow().close()
+            );
+
+            require('./browser');
+        </script>
+    </body>
+</html>
