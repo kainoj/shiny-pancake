@@ -1,6 +1,6 @@
 #include <v8.h>
 #include <string>
-
+#pragma once
 
 struct GameObject{
 	int x;
@@ -17,6 +17,7 @@ struct GameObject{
 		getValue(isolate, object);
 		return object;
 	}
+	virtual void update(float dt){};
 	virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object){
 	  object->Set(v8::String::NewFromUtf8(isolate, "_id_"),
 	              v8::Number::New(isolate, id));
@@ -34,6 +35,7 @@ struct GameObject{
 struct Ball : public GameObject
 {
 	Ball() : GameObject{"Basic", 0, 0, 0} {}
+	virtual void update(float dt){ x++; y++; };
 	virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
 		GameObject::getValue(isolate, object);
 		object->Set(v8::String::NewFromUtf8(isolate, "XD"),

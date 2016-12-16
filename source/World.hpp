@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject"
+#include "GameObject.hpp"
 
 struct World{
 	static World &getInstance()
@@ -14,4 +14,12 @@ struct World{
 		go->id = ++currentObjectID;
 		objects.push_back(go);
 	}
-}
+	void step()
+	{
+		float dt = 1.0f/60;
+		for(auto& go : objects)
+		{
+			go->update(dt);
+		}
+	}
+};

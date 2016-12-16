@@ -2,11 +2,12 @@
 #include <v8.h>
 #include "GameObject.hpp"
 #include <memory>
+#include "Simulate.hpp"
 
 void getData(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
 
-  v8::Local<v8::Array> data = v8::Array::New(isolate, 1);
+  // v8::Local<v8::Array> data = v8::Array::New(isolate, 1);
 
   // v8::Local<v8::Object> object1 = v8::Object::New(isolate);
   // object1->Set(v8::String::NewFromUtf8(isolate, "_id_"),
@@ -36,14 +37,16 @@ void getData(const v8::FunctionCallbackInfo<v8::Value>& args) {
 
   // data->Set(1, object2);
 
-	auto ball = std::make_shared<Ball>();
+	// auto ball = std::make_shared<Ball>();
 
-	data->Set(0, ball->getData(isolate));
+	// data->Set(0, ball->getData(isolate));
+  auto result = simulate(isolate);
 
-  args.GetReturnValue().Set(data);
+  args.GetReturnValue().Set(result);
 }
 
 void init(v8::Local<v8::Object> exports) {
+	initWorld();
   NODE_SET_METHOD(exports, "getData", getData);
 }
 
