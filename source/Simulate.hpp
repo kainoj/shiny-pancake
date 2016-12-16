@@ -5,8 +5,8 @@ void initWorld(){
 	World& world = World::getInstance();
 	for(int i = 0;i < 10; i++){
 		auto ball = std::make_shared<Ball>();\
-		ball->x = 10 + 30*i;
-		ball->y = 20 + 40*i;
+		ball->x = (10 + 30*i) % 500;
+		ball->y = (20 + 40*i) % 500;
 		world.spawn(ball);
 	}
 }
