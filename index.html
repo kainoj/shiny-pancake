@@ -15,31 +15,7 @@
                 background-image: url('assets/sayagata.png');
             }
 
-            canvas {
-                top:  50%;
-                left: 50%;
-
-                position: absolute;
-
-                transform: translateX(-50%) translateY(-50%);
-            }
-
-            path {
-                stroke: #999aa0;
-                opacity: 0.5;
-
-                cursor: pointer;
-
-                stroke-linecap: round;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            path:hover {
-                opacity: 1;
-            }
-
-            svg {
+            #close {
                 top:   1rem;
                 right: 0rem;
 
@@ -50,17 +26,43 @@
 
                 transform: translateX(-50%) translateY(-50%);
             }
+
+            #close path {
+                stroke: #999aa0;
+                opacity: 0.5;
+
+                cursor: pointer;
+
+                stroke-linecap: round;
+
+                transition: opacity 0.25s ease-in-out;
+            }
+
+            #close path:hover {
+                opacity: 1;
+            }
+
+            #world {
+                position: fixed;
+
+                top:  0;
+                left: 0;
+
+                width:  500px;
+                height: 500px;
+            }
         </style>
     </head>
     <body>
-        <svg viewbox="0 0 4 4">
+        <svg id="world" viewbox="0 0 500 500">
+        </svg>
+
+        <svg id="close" viewbox="0 0 4 4">
             <path d="M0,0 L4,4 M4,0 L0,4" />
         </svg>
 
-        <canvas></canvas>
-
         <script>
-            document.querySelector('path').addEventListener('click', () =>
+            document.querySelector('#close path').addEventListener('click', () =>
                 require('electron').remote.getCurrentWindow().close()
             );
 
