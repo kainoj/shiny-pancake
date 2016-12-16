@@ -7,7 +7,7 @@ struct Spawner : public GameObject {
   float timeSinceLastSpawn;
   int spawnCount = 0;
   Spawner(float spawnTimer_)
-      : GameObject{"Spawner", 0, 0, 0},
+      : GameObject{"Spawner", randRange(1, 2), 0, 0},
         timeSinceLastSpawn{0.0},
         spawnTimer{spawnTimer_} {}
   virtual std::shared_ptr<GameObject> getObject() {

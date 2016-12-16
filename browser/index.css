@@ -20,10 +20,9 @@ body {
 }
 
 #world .live {
-    stroke: red;
     stroke-width: 3;
-    stroke-dasharray: 100;
+    stroke-dasharray: 1000;
 }
 
-#world .team-1 {fill: rgb(160, 20, 100);}
-#world .team-2 {fill: rgb(20, 200, 135);}
+#world .team-1 {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
+#world .team-2 {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}

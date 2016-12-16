@@ -30,8 +30,9 @@ function findCell (unit) {
         fresh.classList.add('live');
     } else if (unit.type === 'Bullet') {
         fresh.setAttribute('r', 2);
-    } else {
-        fresh.setAttribute('r', 10);
+    } else if (unit.type === 'Spawner') {
+        fresh.setAttribute('r', 25);
+        fresh.classList.add('live');
     }
 
     root.appendChild(fresh);
@@ -42,5 +43,10 @@ function findCell (unit) {
 function updateCell (cell, unit) {
     cell.setAttribute('cx', unit.posx);
     cell.setAttribute('cy', unit.posy);
-    cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (100 - 37)));
+
+    if (unit.type === 'Spawner') {
+        cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 844)));
+    } else {
+        cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 937)));
+    }
 }
