@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.hpp"
 
+<<<<<<< HEAD
 struct World{
 	static World &getInstance()
 	{
