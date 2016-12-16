@@ -21,9 +21,18 @@ function findCell (unit) {
     const fresh = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 
     fresh.id = unit._id_;
-    fresh.setAttribute('r', 10);
+
     fresh.classList.add(unit.type);
     fresh.classList.add('team-' + unit.team);
+
+    if (unit.type === 'Basic') {
+        fresh.setAttribute('r', 10);
+        fresh.classList.add('live');
+    } else if (unit.type === 'Bullet') {
+        fresh.setAttribute('r', 2);
+    } else {
+        fresh.setAttribute('r', 10);
+    }
 
     root.appendChild(fresh);
 
@@ -33,5 +42,5 @@ function findCell (unit) {
 function updateCell (cell, unit) {
     cell.setAttribute('cx', unit.posx);
     cell.setAttribute('cy', unit.posy);
-    cell.setAttribute('stroke-dashoffset', ~~(100 - unit.health / 100 * (100 - 37)));
+    cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (100 - 37)));
 }
