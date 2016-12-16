@@ -1,8 +1,12 @@
+const pancake = require('./build/Release/pancake');
+
 const root = document.querySelector('#world');
 const teams = {
     1: 'red',
     2: 'blue'
 };
+
+alert(pancake ? ':)' : ':(');
 
 requestAnimationFrame(function frame () {
     requestAnimationFrame(frame);
