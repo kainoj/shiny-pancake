@@ -1,14 +1,13 @@
 #include "World.hpp"
+#include "Spawner.hpp"
 #include <memory>
 
 void initWorld(){
 	World& world = World::getInstance();
-	for(int i = 0;i < 10; i++){
-		auto ball = std::make_shared<Ball>();\
-		ball->x = 10 + 30*i;
-		ball->y = 20 + 40*i;
-		world.spawn(ball);
-	}
+	auto spawner = std::make_shared<Spawner>(1.0f);
+	spawner->x = 100;
+	spawner->y = 100;
+	world.spawn(spawner);
 }
 
 v8::Local<v8::Array> simulate(v8::Isolate* isolate)
@@ -16,7 +15,7 @@ v8::Local<v8::Array> simulate(v8::Isolate* isolate)
 	World& world = World::getInstance();
 	world.step();
 
-	v8::Local<v8::Array> data = v8::Array::New(isolate, 1);
+	v8::Local<v8::Array> data = v8::Array::New(isolate, world.objects.size());
 	size_t index = 0;
 	for(auto& go : world.objects)
 	{
