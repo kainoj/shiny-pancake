@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.hpp"
+#include "Entities/Basic.hpp"
 #include <memory>
 
 struct Spawner : public GameObject {
@@ -11,7 +11,7 @@ struct Spawner : public GameObject {
         timeSinceLastSpawn{0.0},
         spawnTimer{spawnTimer_} {}
   virtual std::shared_ptr<GameObject> getObject() {
-    auto ball = std::make_shared<Ball>();
+    auto ball = std::make_shared<Basic>();
     ball->x = x + rand() % 100;
     ball->y = y + rand() % 100;
     return ball;

@@ -1,5 +1,6 @@
 #include "World.hpp"
 #include "Spawner.hpp"
+#include "Entities/Basic.hpp"
 #include <memory>
 #include <cstdlib>
 #include <ctime>
