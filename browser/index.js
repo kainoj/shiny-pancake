@@ -8,25 +8,8 @@ const teams = {
 
 requestAnimationFrame(function frame () {
     requestAnimationFrame(frame);
-    draw(data());
+    draw(pancake.getData());
 });
-
-function data () {
-    // TODO: C++
-    return [{
-        _id_: 0,
-        posx: 20,
-        posy: 30,
-        type: 'dummy',
-        team: 1
-    }, {
-        _id_: 1,
-        posx: 200,
-        posy: 300,
-        type: 'dummy',
-        team: 2
-    }];
-}
 
 function draw (data) {
     data.forEach(unit => updateCell(findCell(unit), unit));
