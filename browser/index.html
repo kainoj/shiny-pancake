@@ -3,57 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Hackaton!</title>
-        <style>
-            body {
-                margin: 0;
-
-                width:  100vh;
-                height: 100vh;
-
-                font-size: 15px;
-
-                background-image: url('../assets/sayagata.png');
-            }
-
-            #close {
-                top:   1rem;
-                right: 0rem;
-
-                width:  1rem;
-                height: 1rem;
-
-                position: absolute;
-
-                transform: translateX(-50%) translateY(-50%);
-            }
-
-            #close path {
-                stroke: #999aa0;
-                opacity: 0.5;
-
-                cursor: pointer;
-
-                stroke-linecap: round;
-
-                transition: opacity 0.25s ease-in-out;
-            }
-
-            #close path:hover {
-                opacity: 1;
-            }
-
-            #world {
-                position: fixed;
-
-                top:  0;
-                left: 0;
-
-                width:  500px;
-                height: 500px;
-
-                transform: rotateX(180deg);
-            }
-        </style>
+        <link href="index.css" rel="stylesheet">
     </head>
     <body>
         <svg id="world" viewbox="0 0 500 500">

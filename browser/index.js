@@ -26,6 +26,7 @@ function findCell (unit) {
 
     fresh.id = unit._id_;
     fresh.setAttribute('r', 10);
+    fresh.classList.add(unit.type);
 
     root.appendChild(fresh);
 
