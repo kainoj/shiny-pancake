@@ -48,7 +48,12 @@ body {
     transform: rotateX(180deg);
 }
 
-#world .dummy {
+#world circle {
+    stroke: red;
+    stroke-width: 3;
+    stroke-dasharray: 100;
+    transform: rotate(90deg);
+    transform-origin: center center;
 }
 
 #world .team-1 {
