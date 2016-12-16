@@ -1,4 +1,4 @@
-const pancake = require('../build/Release/pancake');
+const pancake = window.pancake = require('../build/Release/pancake');
 
 const root = document.querySelector('#world');
 const teams = {
