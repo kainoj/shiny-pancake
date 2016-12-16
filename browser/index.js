@@ -1,10 +1,6 @@
 const pancake = window.pancake = require('../build/Release/pancake');
 
 const root = document.querySelector('#world');
-const teams = {
-    1: 'red',
-    2: 'blue'
-};
 
 requestAnimationFrame(function frame () {
     requestAnimationFrame(frame);
@@ -27,6 +23,7 @@ function findCell (unit) {
     fresh.id = unit._id_;
     fresh.setAttribute('r', 10);
     fresh.classList.add(unit.type);
+    fresh.classList.add('team-' + unit.team);
 
     root.appendChild(fresh);
 
@@ -36,5 +33,4 @@ function findCell (unit) {
 function updateCell (cell, unit) {
     cell.setAttribute('cx', unit.posx);
     cell.setAttribute('cy', unit.posy);
-    cell.setAttribute('fill', teams[unit.team]);
 }

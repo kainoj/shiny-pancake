@@ -50,3 +50,11 @@ body {
 
 #world .dummy {
 }
+
+#world .team-1 {
+    fill: blue;
+}
+
+#world .team-2 {
+    fill: red;
+}
