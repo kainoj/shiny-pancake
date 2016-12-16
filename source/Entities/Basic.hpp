@@ -8,7 +8,7 @@ struct Basic : public GameObject {
     y = (y + 1) % 500;
   };
   virtual void updateHP(float dmg) { // dammage taken
-  	hp-=dammage;
+  	hp-=dmg;
   }
   virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
     GameObject::getValue(isolate, object);
