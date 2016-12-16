@@ -23,8 +23,8 @@
     }
   ],
   "scripts": {
-    "install": "sh install.sh",
-    "start": "electron ."
+    "install": "sh scripts/install.sh",
+    "start": "sh scripts/build.sh && electron ."
   },
   "devDependencies": {
     "electron": "^1.4.1"

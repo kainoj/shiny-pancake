@@ -6,8 +6,6 @@ const teams = {
     2: 'blue'
 };
 
-alert(pancake ? ':)' : ':(');
-
 requestAnimationFrame(function frame () {
     requestAnimationFrame(frame);
     draw(data());

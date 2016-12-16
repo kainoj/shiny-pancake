@@ -12,5 +12,3 @@ export npm_config_build_from_source=true
 # Install all dependencies, and store cache to ~/.electron-gyp.
 HOME=~/.electron-gyp node-gyp install
 HOME=~/.electron-gyp node-gyp configure
-HOME=~/.electron-gyp node-gyp build
-HOME=~/.electron-gyp npm install --ignore-scripts

@@ -33,7 +33,7 @@ function createWindow () {
     window.webContents.openDevTools({mode: 'detach'});
 
     window.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, 'browser/index.html'),
         protocol: 'file:',
         slashes: true
     }));
