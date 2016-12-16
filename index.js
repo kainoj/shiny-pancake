@@ -22,15 +22,14 @@ function createWindow () {
     window = new electron.BrowserWindow({
         frame: false,
         center: true,
+        transparent: true,
 
         width:  500,
         height: 500,
 
-        minWidth:  500,
-        minHeight: 500
+        maxWidth:  500,
+        maxHeight: 500
     });
-
-    window.webContents.openDevTools({mode: 'detach'});
 
     window.loadURL(url.format({
         pathname: path.join(__dirname, 'browser/index.html'),

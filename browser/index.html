@@ -9,15 +9,7 @@
         <svg id="world" viewbox="0 0 500 500">
         </svg>
 
-        <svg id="close" viewbox="0 0 4 4">
-            <path d="M0,0 L4,4 M4,0 L0,4" />
-        </svg>
-
         <script>
-            document.querySelector('#close path').addEventListener('click', () =>
-                require('electron').remote.getCurrentWindow().close()
-            );
-
             require('.');
         </script>
     </body>
