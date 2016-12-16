@@ -35,7 +35,7 @@ struct GameObject{
 struct Ball : public GameObject
 {
 	Ball() : GameObject{"Basic", 0, 0, 0} {}
-	virtual void update(float dt){ x++; y++; };
+	virtual void update(float dt){ x = (x + 1) % 500; y = (y + 1) % 500; };
 	virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
 		GameObject::getValue(isolate, object);
 		object->Set(v8::String::NewFromUtf8(isolate, "XD"),

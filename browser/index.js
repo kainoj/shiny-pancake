@@ -33,4 +33,5 @@ function findCell (unit) {
 function updateCell (cell, unit) {
     cell.setAttribute('cx', unit.posx);
     cell.setAttribute('cy', unit.posy);
+    cell.setAttribute('stroke-dashoffset', ~~(100 - unit.health / 100 * (100 - 37)));
 }
