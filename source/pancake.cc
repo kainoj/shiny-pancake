@@ -13,7 +13,7 @@ void getData(const v8::FunctionCallbackInfo<v8::Value>& args) {
 }
 
 void init(v8::Local<v8::Object> exports) {
-	initWorld();
+  initWorld();
 
   NODE_SET_METHOD(exports, "getData", getData);
 }
