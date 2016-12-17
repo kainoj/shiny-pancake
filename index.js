@@ -21,20 +21,14 @@ electron.app.on('window-all-closed', function () {
 function createWindow () {
     window = new electron.BrowserWindow({
         frame: false,
-        center: true,
         fullscreen: true,
         transparent: true,
 
         width:  1920,
-        height: 1080,
-
-        maxWidth:  1920,
-        maxHeight: 1080,
-
-        minWidth:  1920,
-        minHeight: 1080
+        height: 1080
     });
 
+    window.setIgnoreMouseEvents(true);
     window.loadURL(url.format({
         pathname: path.join(__dirname, 'browser/index.html'),
         protocol: 'file:',

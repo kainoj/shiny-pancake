@@ -11,9 +11,22 @@ requestAnimationFrame(function frame(now) {
   prev = now;
 });
 
-document.addEventListener('click',       event => ++mult);
-document.addEventListener('contextmenu', event => --mult);
-document.addEventListener('keydown',     event => document.body.classList.toggle('debug'));
+document.addEventListener('keydown', event => {
+  switch (event.key) {
+    case 'd':
+      document.body.classList.toggle('debug');
+      break;
+    case 'j':
+      ++mult;
+      break;
+    case 'k':
+      --mult;
+      break;
+    case 'p':
+      mult = 0;
+      break;
+  }
+});
 
 function draw(data) {
   data.forEach(unit => updateCell(findCell(unit), unit));
