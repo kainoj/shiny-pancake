@@ -9,8 +9,11 @@ struct Tank : public Basic {
 		type = "Tank";
 		range *= 0.5;
 		speed *= 0.7;
-		
 
+	}
+
+	virtual updateHP(float dmg) {
+		hp -= 0.7*dmg;
 	}
 
 }
