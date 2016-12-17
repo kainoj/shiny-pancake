@@ -11,9 +11,9 @@ requestAnimationFrame(function frame(now) {
   prev = now;
 });
 
-document.addEventListener('click',       event => (event.preventDefault(), ++mult));
-document.addEventListener('contextmenu', event => (event.preventDefault(), --mult));
-document.addEventListener('keydown',     event => (event.preventDefault(), document.body.classList.toggle('debug')));
+document.addEventListener('click',       event => ++mult);
+document.addEventListener('contextmenu', event => --mult);
+document.addEventListener('keydown',     event => document.body.classList.toggle('debug'));
 
 function draw(data) {
   data.forEach(unit => updateCell(findCell(unit), unit));
