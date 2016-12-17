@@ -64,8 +64,8 @@ function updateCell (cell, unit) {
     cell.setAttribute('transform', `translate(${unit.posx}, ${unit.posy})`);
 
     if (unit.type === 'Spawner') {
-        cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 844)));
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 844)));
     } else {
-        cell.setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 937)));
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 937)));
     }
 }
