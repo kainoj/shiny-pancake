@@ -17,11 +17,13 @@ constexpr float TankRange = 0.5;
 constexpr float TankSpeed = 0.5;
 constexpr float TankSize = BasicSize * 1.5;
 constexpr float TankDmgReduce = 0.7;
+constexpr float TankGravityFactor = 5.0f;
 
 //          THE GAME
 constexpr unsigned TimeResolution = 1;
 constexpr float ScreenWidth = 1920.0;
 constexpr float ScreenHeigth = 1080.0;
+constexpr float CommunicationRange = 70.0f;
 
 //   PRESENTATON VARIABLES
 constexpr int SniperCd1 = 4;

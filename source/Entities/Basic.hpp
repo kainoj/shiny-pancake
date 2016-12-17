@@ -6,6 +6,12 @@
 #include "Bullet.hpp"
 #include "../consts.hpp"
 
+enum class State{
+  Attack,
+  Engaging,
+  Seeking,
+};
+
 // PATRZ DO costs.hpp
 struct Basic : public GameObject {
   float size = BasicSize;
@@ -14,7 +20,9 @@ struct Basic : public GameObject {
   float vx, vy;
   float attackTimer = BasicAttackTimer;
   float timeSinceLastAttack = BasicTimeSinceLastAttack;
+  float communicationRange = CommunicationRange;
   std::shared_ptr<Basic> opponent;
+  State state = State::Seeking;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
     calculateSpeedVector();
@@ -36,8 +44,8 @@ struct Basic : public GameObject {
   };
 
   virtual void move(float dt) {
-    x += vx * dt * calculateSlowFactor();
-    y += vy * dt * calculateSlowFactor();
+    x += vx * dt;
+    y += vy * dt;
 
     if (x < size) {
       x = size;
@@ -59,37 +67,74 @@ struct Basic : public GameObject {
 
   virtual unsigned score() { return 1; }
 
-  float calculateSlowFactor()
-  {
-    if(opponent == nullptr)
-      return 1.0/2;
-    float disX = x - opponent->x;
-    float disY = y - opponent->y;
-    float root = sqrt(disX*disX + disY*disY);
-    if(range > root)
-      return 0.2;
-    return 1.0/2;
-  }
-
   virtual void update(float dt) {
-    opponent =
-        World::getInstance().getNearestUnit(x, y, range, team);
-    if (opponent != nullptr) {
-      // found an opponent
-      attack(opponent, 10, dt); // RANDOM DMG
+    World &world = World::getInstance();
+    if(state == State::Seeking)
+    {
+      auto enemy = world.getNearestUnit(x, y, range, team);
+      if(enemy != nullptr)
+      {
+        opponent = enemy;
+        state = State::Attack;
+      }
+      else
+      {
+        auto objects = world.getAlliedObjectsInRadius(x, y, communicationRange, team);
+        for(auto& go : objects){
+          if(go->state == State::Attack || go->state == State::Engaging)
+          {
+            opponent = go->opponent;
+            state = State::Engaging;
+            break;
+          }
+        }
+        if(opponent == nullptr && distance(vx, vy, 0, 0) < speed)
+        {
+          calculateSpeedVector();
+        }
+        move(dt);
+      }
     }
-    else{
-      // search for an opponent
-      move(dt);
+    if(state == State::Engaging)
+    {
+      if(opponent == nullptr || opponent->hp <= 0)
+      {
+        opponent = nullptr;
+        state = State::Seeking;
+      }
+      else{
+        if(distance(x, y, opponent->x, opponent->y) <= range)
+        {
+          state = State::Attack;
+        }
+        else
+        {
+          vx = opponent->x - x;
+          vy = opponent->y - y;
+          move(dt);
+        }
+      }
+    }
+    if(state == State::Attack)
+    {
+      if(opponent == nullptr || opponent->hp <= 0)
+      {
+        opponent = nullptr;
+        state = State::Seeking;
+      }
+      else{
+        if(distance(x, y, opponent->x, opponent->y) > range)
+        {
+          state = State::Engaging;
+        }
+        else
+          attack(opponent, 10, dt);
+      }
     }
   };
 
   virtual void updateHP(float dmg) { // dammage taken
     hp -= dmg;
-    if(rand() % 1 == 0)
-    {
-      World::getInstance().setDistressCall(x, y, range*2, team);
-    }
   }
 
   virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {

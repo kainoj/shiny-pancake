@@ -62,4 +62,7 @@ struct World {
 
   std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);
   void setDistressCall(float x, float y, float range, unsigned team);
+
+  std::vector<std::shared_ptr<Basic>> getAlliedObjectsInRadius(float x, float y, float radius, unsigned team);
+  
 };

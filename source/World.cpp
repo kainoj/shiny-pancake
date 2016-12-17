@@ -32,6 +32,23 @@ std::vector<std::shared_ptr<Bullet>> World::getBulletsInRadius(float x,
   return result;
 }
 
+std::vector<std::shared_ptr<Basic>>
+World::getAlliedObjectsInRadius(float x, float y, float radius, unsigned team) {
+  std::vector<std::shared_ptr<Basic>> result;
+  for (auto& object : objects) {
+    auto unit = std::dynamic_pointer_cast<Basic>(object);
+    if(unit != nullptr)
+    {
+      float disX = object->x - x;
+      float disY = object->y - y;
+      if (disX * disX + disY * disY < radius * radius && unit->team == team && unit->type != "Spawner") {
+        result.push_back(unit);
+      }
+    }
+  }
+  return result;
+}
+
 std::shared_ptr<Basic> World::getNearestUnit(float x,
                                              float y,
                                              float range,
