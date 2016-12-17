@@ -7,10 +7,10 @@
 
 struct Basic : public GameObject {
   float size = 10.0;
-  float range = 70;  // TEMPORARY
+  float range = 70; // TEMPORARY
   float speed;
   float vx, vy;
-  float attackTimer = 1.0;  // TEMPORARY
+  float attackTimer = 1.0; // TEMPORARY
   float timeSinceLastAttack = 0.0;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
@@ -27,12 +27,16 @@ struct Basic : public GameObject {
     timeSinceLastAttack += dt;
     if (timeSinceLastAttack > attackTimer) {
       timeSinceLastAttack = timeSinceLastAttack - attackTimer;
-      World& world = World::getInstance();
-      world.spawn(std::make_shared<Bullet>(team, 100.0f, x, y, opponent->x,
+      World &world = World::getInstance();
+      world.spawn(std::make_shared<Bullet>(team, 200.0f, x, y, opponent->x,
+                                           opponent->y));
+      world.spawn(std::make_shared<Bullet>(team, 300.0f, x, y, opponent->x,
+                                           opponent->y));
+      world.spawn(std::make_shared<Bullet>(team, 350.0f, x, y, opponent->x,
                                            opponent->y));
     }
-    // remove from board
   };
+
   virtual void move(float dt) {
     x += vx * dt;
     y += vy * dt;
@@ -53,21 +57,24 @@ struct Basic : public GameObject {
       vy = -vy;
     }
   };
+
   virtual void update(float dt) {
     std::shared_ptr<Basic> opponent =
         World::getInstance().getNearestUnit(x, y, range, team);
     if (opponent != nullptr) {
       // found an opponent
-      attack(opponent, 10, dt);  // RANDOM DMG
+      attack(opponent, 10, dt); // RANDOM DMG
     } else {
       // search for an opponent
       move(dt);
     }
   };
-  virtual void updateHP(float dmg) {  // dammage taken
+
+  virtual void updateHP(float dmg) { // dammage taken
     hp -= dmg;
   }
-  virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
+
+  virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
     GameObject::getValue(isolate, object);
   }
 };
