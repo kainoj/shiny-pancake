@@ -19,10 +19,34 @@ body {
     transform: rotateX(180deg);
 }
 
-#world .live {
+#world .live .cell {
     stroke-width: 3;
     stroke-dasharray: 1000;
 }
 
-#world .team-1 {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
-#world .team-2 {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}
+#world .live .range {
+    fill: transparent;
+    stroke: gray;
+    stroke-opacity: 0.2;
+    stroke-dasharray: 10;
+    stroke-dashoffset: 0;
+
+    animation: 1s range infinite;
+}
+
+#world .Basic.live .range {
+    r: 70;
+}
+
+#world .team-1 .cell {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
+#world .team-2 .cell {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}
+
+@keyframes range {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: 100;
+    }
+}
