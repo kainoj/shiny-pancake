@@ -1,5 +1,6 @@
 #pragma once
 #include "Basic.hpp"
+#include "Sniper.hpp"
 #include "Tank.hpp"
 #include <memory>
 
@@ -14,7 +15,11 @@ struct Spawner : public Basic {
   virtual std::shared_ptr<GameObject> getObject() {
     std::shared_ptr<GameObject> ball;
 
-    if (randRange(0, 10) >= 5) {
+    unsigned choice = randRange(0, 10);
+
+    if (choice >= 9) {
+      ball = std::make_shared<Sniper>(team);
+    } else if (choice >= 6) {
       ball = std::make_shared<Tank>(team);
     } else {
       ball = std::make_shared<Basic>(team);

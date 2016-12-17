@@ -66,6 +66,8 @@ function updateCell (cell, unit) {
         cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 937)));
     } else if (unit.type === 'Spawner') {
         cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 844)));
+    } else if (unit.type === 'Sniper') {
+        // cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 937)));
     } else if (unit.type === 'Tank') {
         cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 906)));
     }
