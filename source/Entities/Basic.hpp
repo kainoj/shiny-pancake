@@ -6,7 +6,6 @@
 const float vectorLength = 250.0;
 
 struct Basic : public GameObject {
-  float hp = 100;
   float range = 70;
   float vx = randRange(5,10) * (vectorLength/10.0) * (randRange(0, 1) ? 1 : -1);
   float vy = sqrtf(vectorLength*vectorLength - (vx*vx)) * (randRange(0, 1) ? 1 : -1);

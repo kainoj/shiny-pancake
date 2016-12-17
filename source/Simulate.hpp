@@ -29,5 +29,6 @@ v8::Local<v8::Array> simulate(v8::Isolate* isolate) {
     auto jsObject = go->getData(isolate);
     data->Set(index++, jsObject);
   }
+  world.removeObjects();
   return data;
 }

@@ -3,6 +3,7 @@
 #include <memory>
 #include <list>
 #include <queue>
+#include <algorithm>
 
 class Basic;
 
@@ -16,28 +17,16 @@ struct World {
   }
   std::queue<unsigned> freeIds;
   std::vector<std::shared_ptr<GameObject> > toBeAdded;
-  std::vector<std::shared_ptr<GameObject> > toBeRemoved;
   std::vector<std::shared_ptr<GameObject> > objects;
   int currentObjectID = 0;
   void spawn(std::shared_ptr<GameObject> go) {
     go->id = ++currentObjectID;
     toBeAdded.push_back(go);
   }
-  void remove(std::shared_ptr<GameObject> go) {
-    toBeRemoved.push_back(go);
-  }
   void step() {
     if (!toBeAdded.empty()) {
       objects.insert(objects.end(), toBeAdded.begin(), toBeAdded.end());
       toBeAdded.clear();
-    }
-    for(auto& go : toBeRemoved)
-    {
-    	auto it = std::find(objects.begin(), objects.end(), go);
-    	if(it != objects.end()){
-    		freeIds.push_back(go->id);
-    		objects.erase(it);
-			}
     }
     float dt = 1.0f / 60;
     time += dt;
@@ -45,6 +34,19 @@ struct World {
         go->update(dt);
     }
   }
+
+ 	void removeObjects()
+ 	{
+ 		for (auto it = objects.begin(); it != objects.end(); it++)
+ 		{
+ 			auto go = *it;
+ 			while(go->hp <= 0)
+ 			{
+ 				it = objects.erase(it);
+ 				go = *it;
+ 			}
+ 		}
+ 	}
 
   std::vector<std::shared_ptr<GameObject> > getObjectsInRadius(float x,
                                                                float y,
