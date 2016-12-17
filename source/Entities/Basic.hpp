@@ -4,26 +4,26 @@
 
 struct Basic : public GameObject {
   float hp = 100;
-  float vx = randRange(-10, 10) * 20;
-  float vy = randRange(-10, 10) * 20;
-  Basic() : GameObject{"Basic", randRange(1, 2), 0, 0} {}
+  float vx = randRange(5,10) * 20 * (randRange(0, 1) ? 1 : -1);
+  float vy = randRange(5,10) * 20 * (randRange(0, 1) ? 1 : -1);
+  Basic(int team) : GameObject{"Basic", team, 0, 0, 10} {}
   virtual void update(float dt) {
-    x = (int) (x + vx * dt);
-    y = (int) (y + vy * dt);
+    x += vx * dt; 
+    y += vy * dt;
 
-    if (x < 10) {	// kuleczki odbijaja sie krawedzia
-      x = 10;
+    if (x < size) {
+      x = size;
       vx = -vx;
-    } else if (x > 490) {
-      x = 490;
+    } else if (x > 500 - size) {
+      x = 500 - size;
       vx = -vx;
     }
 
-    if (y < 10) {
-      y = 10;
+    if (y < size) {
+      y = size;
       vy = -vy;
-    } else if (y > 490) {
-      y = 490;
+    } else if (y > 500 - size) {
+      y = 500 - size;
       vy = -vy;
     }
   };

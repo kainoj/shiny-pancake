@@ -8,12 +8,12 @@ void initWorld() {
   std::srand(time(nullptr));
   World& world = World::getInstance();
 
-  auto spawner1 = std::make_shared<Spawner>(1.0f);
+  auto spawner1 = std::make_shared<Spawner>(1.0f, 1);
   spawner1->x = 30;
   spawner1->y = 30;
   world.spawn(spawner1);
 
-  auto spawner2 = std::make_shared<Spawner>(1.0f);
+  auto spawner2 = std::make_shared<Spawner>(1.0f, 2);
   spawner2->x = 470;
   spawner2->y = 470;
   world.spawn(spawner2);
