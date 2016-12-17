@@ -55,6 +55,9 @@ struct World {
                                         float radius,
                                         unsigned team);
 
-  std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);
-  void setDistressCall(float x, float y, float range, unsigned team);
+  std::shared_ptr<Basic> collidesWithUnit(float sx, float sy, float ex, float ey, unsigned);
+  void setDistressCall(float x,
+                             float y,
+                             float range,
+                             unsigned team);
 };
