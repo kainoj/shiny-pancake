@@ -40,13 +40,13 @@ body {
     animation: 1s range infinite;
 }
 
-#world .Basic.live .range {
-    r: 70;
-}
+#world .Bullet  .back, #world .Bullet  .cell {r: 2;}
+#world .Basic   .back, #world .Basic   .cell {r: 10;}
+#world .Tank    .back, #world .Tank    .cell {r: 15;}
+#world .Spawner .back, #world .Spawner .cell {r: 25;}
 
-#world .Tank.live .range {
-    r: 35;
-}
+#world .Basic .range {r: 70;}
+#world .Tank  .range {r: 35;}
 
 #world .team-1 .back, #world .team-1 .cell {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
 #world .team-2 .back, #world .team-2 .cell {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}

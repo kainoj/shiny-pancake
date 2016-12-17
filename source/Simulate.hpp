@@ -1,5 +1,5 @@
 #include "World.hpp"
-#include "Spawner.hpp"
+#include "Entities/Spawner.hpp"
 #include "Entities/Basic.hpp"
 #include <memory>
 
