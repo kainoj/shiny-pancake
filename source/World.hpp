@@ -16,11 +16,7 @@ struct World {
   }
   std::queue<unsigned> freeIds;
   std::vector<std::shared_ptr<GameObject> > toBeAdded;
-<<<<<<< Updated upstream
   std::vector<std::shared_ptr<GameObject> > toBeRemoved;
-=======
-  std::vector<std::shared_ptr<GameObject> > toBeDeleted;
->>>>>>> Stashed changes
   std::vector<std::shared_ptr<GameObject> > objects;
   int currentObjectID = 0;
   void spawn(std::shared_ptr<GameObject> go) {
