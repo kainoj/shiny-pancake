@@ -14,6 +14,7 @@ struct Basic : public GameObject {
   float vx, vy;
   float attackTimer = BasicAttackTimer;
   float timeSinceLastAttack = BasicTimeSinceLastAttack;
+  std::shared_ptr<Basic> opponent;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
     calculateSpeedVector();
@@ -35,8 +36,8 @@ struct Basic : public GameObject {
   };
 
   virtual void move(float dt) {
-    x += vx * dt;
-    y += vy * dt;
+    x += vx * dt * calculateSlowFactor();
+    y += vy * dt * calculateSlowFactor();
 
     if (x < size) {
       x = size;
@@ -53,17 +54,31 @@ struct Basic : public GameObject {
       y = ScreenHeigth - size;
       vy = -vy;
     }
+
   };
 
   virtual unsigned score() { return 1; }
 
+  float calculateSlowFactor()
+  {
+    if(opponent == nullptr)
+      return 1.0/2;
+    float disX = x - opponent->x;
+    float disY = y - opponent->y;
+    float root = sqrt(disX*disX + disY*disY);
+    if(range > root)
+      return 0.2;
+    return 1.0/2;
+  }
+
   virtual void update(float dt) {
-    std::shared_ptr<Basic> opponent =
+    opponent =
         World::getInstance().getNearestUnit(x, y, range, team);
     if (opponent != nullptr) {
       // found an opponent
       attack(opponent, 10, dt); // RANDOM DMG
-    } else {
+    }
+    else{
       // search for an opponent
       move(dt);
     }
@@ -71,6 +86,10 @@ struct Basic : public GameObject {
 
   virtual void updateHP(float dmg) { // dammage taken
     hp -= dmg;
+    if(rand() % 1 == 0)
+    {
+      World::getInstance().setDistressCall(x, y, range*2, team);
+    }
   }
 
   virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
