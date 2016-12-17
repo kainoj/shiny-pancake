@@ -60,4 +60,8 @@ struct World {
                                         unsigned team);
 
   std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);
+  void setDistressCall(float x,
+                             float y,
+                             float range,
+                             unsigned team);
 };
