@@ -22,13 +22,17 @@ function createWindow () {
     window = new electron.BrowserWindow({
         frame: false,
         center: true,
+        fullscreen: true,
         transparent: true,
 
-        width:  500,
-        height: 500,
+        width:  1920,
+        height: 1080,
 
-        maxWidth:  500,
-        maxHeight: 500
+        maxWidth:  1920,
+        maxHeight: 1080,
+
+        minWidth:  1920,
+        minHeight: 1080
     });
 
     window.loadURL(url.format({

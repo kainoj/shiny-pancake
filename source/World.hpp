@@ -7,8 +7,8 @@
 class Basic;
 
 struct World {
-  float worldSizeX = 500.0;
-  float worldSizeY = 500.0;
+  float worldSizeX = 1920.0;
+  float worldSizeY = 1080.0;
   float time = 0.0;
   static World& getInstance() {
     static World goFactory;
@@ -50,5 +50,6 @@ struct World {
                                                                float y,
                                                                float radius);
 
-  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius);
+  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius,
+                                        unsigned team);
 };
