@@ -8,7 +8,7 @@
 struct Basic : public GameObject {
   float range = 70; // TEMPORARY
   float speed = 250.0;
-  float vx = randRange(0,10) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
+  float vx = randRange(3,7) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
   float vy = sqrtf(speed*speed - (vx*vx)) * (randRange(0, 1) ? 1 : -1);
   float attackTimer = 1.0; // TEMPORARY
   float timeSinceLastAttack = 0.0;
