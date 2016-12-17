@@ -8,6 +8,7 @@ struct Tank : public Basic {
     type = "Tank";
     range *= TankRange;
     speed *= TankSpeed;
+    size = TankSize;
     calculateSpeedVector();
   }
 

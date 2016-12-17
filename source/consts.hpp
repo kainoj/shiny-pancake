@@ -14,6 +14,7 @@ constexpr float SniperAttackTimer = BasicAttackTimer * 0.5;
 //          TANK
 constexpr float TankRange = 0.5;
 constexpr float TankSpeed = 0.5;
+constexpr float TankSize  = BasicSize*1.5;
 constexpr float TankDmgReduce = 0.7;
 
 //          THE GAME
