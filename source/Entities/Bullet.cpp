@@ -4,7 +4,7 @@
 void Bullet::update(float dt) {
   x += velX * dt;
   y += velY * dt;
-  World& world = World::getInstance();
+  World &world = World::getInstance();
   auto unit = world.collidesWithUnit(x, y, team);
   if (unit != nullptr) {
     unit->updateHP(damage);
