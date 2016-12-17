@@ -68,4 +68,6 @@ function updateCell (cell, unit) {
     } else {
         cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 937)));
     }
+
+    cell.setAttribute('HP', unit._hp_);
 }
