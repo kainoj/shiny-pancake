@@ -24,17 +24,24 @@ struct World {
     toBeAdded.push_back(go);
   }
   void remove(std::shared_ptr<GameObject> go) {
-    objects[go->id] = nullptr;  // Terrible hack
+    toBeRemoved.push_back(go);
   }
   void step() {
     if (!toBeAdded.empty()) {
       objects.insert(objects.end(), toBeAdded.begin(), toBeAdded.end());
       toBeAdded.clear();
     }
+    for(auto& go : toBeRemoved)
+    {
+    	auto it = std::find(objects.begin(), objects.end(), go);
+    	if(it != objects.end()){
+    		freeIds.push_back(go->id);
+    		objects.erase(it);
+			}
+    }
     float dt = 1.0f / 60;
     time += dt;
     for (auto& go : objects) {
-      if (objects[go->id] != nullptr)  // Terrible hack
         go->update(dt);
     }
   }
