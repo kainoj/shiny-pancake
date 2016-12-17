@@ -12,11 +12,11 @@ struct Cooldowns {
 
   std::map<char, int> cd;
 
-  Cooldowns() {
-    cdSniper = 15;
-    cdTank = 7;
-    cd['S'] = 6;
-    cd['T'] = 3;
+  Cooldowns(int sniperCooldown, int tankCooldown) {
+    cdSniper = sniperCooldown;
+    cdTank = tankCooldown;
+    cd['S'] = sniperCooldown;
+    cd['T'] = tankCooldown;
   }
 };
 
@@ -25,8 +25,10 @@ struct Spawner : public Basic {
   float timeSinceLastSpawn;
   int spawnCount = 0;
   Cooldowns cooldowns;
-  Spawner(float spawnTimer_, unsigned team)
-      : Basic{team}, spawnTimer{spawnTimer_}, timeSinceLastSpawn{0.0} {
+  Spawner(float spawnTimer_, unsigned team, int sniperCooldown,
+          int tankCooldown)
+      : Basic{team}, spawnTimer{spawnTimer_}, timeSinceLastSpawn{0.0},
+        cooldowns{sniperCooldown, tankCooldown} {
     type = "Spawner";
   }
   virtual std::shared_ptr<GameObject> getObject() {
