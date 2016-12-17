@@ -35,7 +35,12 @@ void initWorld() {
 
 v8::Local<v8::Array> simulate(v8::Isolate* isolate, float dt) {
   World& world = World::getInstance();
-  world.step(dt);
+
+  dt /= TimeResolution;
+
+  for (unsigned it = TimeResolution; it-- > 0;) {
+    world.step(dt);
+  }
 
   v8::Local<v8::Array> data = v8::Array::New(isolate, world.objects.size());
   size_t index = 0;

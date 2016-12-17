@@ -35,23 +35,17 @@ std::shared_ptr<Basic> World::getNearestUnit(float x,
   return result;
 }
 
-std::shared_ptr<Basic> World::collidesWithUnit(float sx,
-                                               float sy,
-                                               float ex,
-                                               float ey,
+std::shared_ptr<Basic> World::collidesWithUnit(float x,
+                                               float y,
                                                unsigned team) {
-  float dx = (sx - ex) / BulletResolution;
-  float dy = (sy - ey) / BulletResolution;
   for (auto& object : objects) {
     auto unit = std::dynamic_pointer_cast<Basic>(object);
     if (unit != nullptr) {
-      for (int it = BulletResolution; --it >= 0;) {
-        float disX = object->x - sx - dx * it;
-        float disY = object->y - sy - dy * it;
-        float dis = disX * disX + disY * disY;
-        if (dis < unit->size * unit->size && unit->team != team) {
-          return unit;
-        }
+      float disX = object->x - x;
+      float disY = object->y - y;
+      float dis = disX * disX + disY * disY;
+      if (dis < unit->size * unit->size && unit->team != team) {
+        return unit;
       }
     }
   }
