@@ -32,10 +32,6 @@ struct Basic : public GameObject {
       World &world = World::getInstance();
       world.spawn(std::make_shared<Bullet>(team, 200.0f, x, y, opponent->x,
                                            opponent->y));
-      world.spawn(std::make_shared<Bullet>(team, 300.0f, x, y, opponent->x,
-                                           opponent->y));
-      world.spawn(std::make_shared<Bullet>(team, 350.0f, x, y, opponent->x,
-                                           opponent->y));
     }
   };
 
