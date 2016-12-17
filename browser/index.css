@@ -20,7 +20,7 @@ body {
 }
 
 #world .live .cell {
-    stroke-width: 30;
+    stroke-width: 5;
     stroke-dasharray: 1000;
 }
 
