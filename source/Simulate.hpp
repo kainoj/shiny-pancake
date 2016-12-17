@@ -9,13 +9,13 @@ void initWorld() {
   World& world = World::getInstance();
 
   auto spawner1 = std::make_shared<Spawner>(1.0f, 1);
-  spawner1->x = 30;
-  spawner1->y = 30;
+  spawner1->x = 50;
+  spawner1->y = 50;
   world.spawn(spawner1);
 
   auto spawner2 = std::make_shared<Spawner>(1.0f, 2);
-  spawner2->x = 470;
-  spawner2->y = 470;
+  spawner2->x = world.worldSizeX - 50;
+  spawner2->y = world.worldSizeY - 50;
   world.spawn(spawner2);
 }
 

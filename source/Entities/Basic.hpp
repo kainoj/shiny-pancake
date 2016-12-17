@@ -3,7 +3,7 @@
 #include <cmath>
 #include "../World.hpp"
 
-const float vectorLength = 100.0;
+const float vectorLength = 250.0;
 
 struct Basic : public GameObject {
   float hp = 100;
@@ -26,16 +26,16 @@ struct Basic : public GameObject {
       if (x < size) {
         x = size;
         vx = -vx;
-      } else if (x > 500 - size) {
-        x = 500 - size;
+      } else if (x > 1920 - size) {
+        x = 1920 - size;
         vx = -vx;
       }
 
       if (y < size) {
         y = size;
         vy = -vy;
-      } else if (y > 500 - size) {
-        y = 500 - size;
+      } else if (y > 1080 - size) {
+        y = 1080 - size;
         vy = -vy;
       }
     }

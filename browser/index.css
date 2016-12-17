@@ -1,8 +1,8 @@
 body {
     margin: 0;
 
-    width:  100vh;
-    height: 100vh;
+    width:  1920px;
+    height: 1080px;
 
     font-size: 15px;
 }
@@ -13,8 +13,8 @@ body {
     top:  0;
     left: 0;
 
-    width:  500px;
-    height: 500px;
+    width:  1920px;
+    height: 1080px;
 
     transform: rotateX(180deg);
 }
