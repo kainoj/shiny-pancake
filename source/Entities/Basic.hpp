@@ -3,13 +3,15 @@
 #include <cmath>
 #include "../World.hpp"
 
-const float vectorLength = 250.0;
+
 
 struct Basic : public GameObject {
   float range = 70;
-  float vx = randRange(5,10) * (vectorLength/10.0) * (randRange(0, 1) ? 1 : -1);
-  float vy = sqrtf(vectorLength*vectorLength - (vx*vx)) * (randRange(0, 1) ? 1 : -1);
-  //float vy = randRange(5,10) * 20 * (randRange(0, 1) ? 1 : -1);
+  float speed = 250.0;
+  float vx = randRange(0,10) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
+  float vy = sqrtf(speed*speed - (vx*vx)) * (randRange(0, 1) ? 1 : -1);
+  
+
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {}
   virtual void update(float dt) {
     std::shared_ptr<Basic> opponent =
