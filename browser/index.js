@@ -3,7 +3,7 @@ const pancake = window.pancake = require('../build/Release/pancake');
 const root = document.querySelector('#world');
 
 let prev = performance.now();
-let mult = 1;
+let mult = 0;
 
 requestAnimationFrame(function frame(now) {
   requestAnimationFrame(frame);
@@ -84,12 +84,12 @@ function updateCell(cell, unit) {
   if (unit.type === 'Stats') {
     cell.style.background = `-webkit-linear-gradient(left,
       rgb(20, 200, 200),
-      rgb(20, 200, 200) ${unit.stats.team1 * 100 - 1}%,
-      rgb(200, 200, 20) ${unit.stats.team1 * 100 + 1}%,
-      rgb(200, 200, 20) ${(unit.stats.team1 + unit.stats.team2) * 100 - 1}%,
-      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2) * 100 + 1}%,
-      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 - 1}%,
-      rgb(100, 200, 20) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 + 1}%,
+      rgb(20, 200, 200) ${unit.stats.team1 * 100 - 0.25}%,
+      rgb(200, 200, 20) ${unit.stats.team1 * 100 + 0.25}%,
+      rgb(200, 200, 20) ${(unit.stats.team1 + unit.stats.team2) * 100 - 0.25}%,
+      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2) * 100 + 0.25}%,
+      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 - 0.25}%,
+      rgb(100, 200, 20) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 + 0.25}%,
       rgb(100, 200, 20)
     )`;
     return;
