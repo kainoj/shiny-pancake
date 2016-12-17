@@ -1,6 +1,4 @@
 #pragma once
-constexpr float tempo = 2.0;
-
 //          BASIC
 constexpr float BasicSize = 10.0;
 constexpr float BasicRange = 70.0;

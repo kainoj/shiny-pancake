@@ -9,17 +9,18 @@
 class Basic;
 
 struct World {
-  std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::steady_clock::now();
+  std::chrono::time_point<std::chrono::steady_clock> start =
+      std::chrono::steady_clock::now();
   float worldSizeX = 1920.0;
   float worldSizeY = 1080.0;
   float time = 0.0;
-  static World& getInstance() {
+  static World &getInstance() {
     static World goFactory;
     return goFactory;
   }
   std::queue<unsigned> freeIds;
-  std::vector<std::shared_ptr<GameObject> > toBeAdded;
-  std::vector<std::shared_ptr<GameObject> > objects;
+  std::vector<std::shared_ptr<GameObject>> toBeAdded;
+  std::vector<std::shared_ptr<GameObject>> objects;
   int currentObjectID = 0;
   void spawn(std::shared_ptr<GameObject> go) {
     go->id = ++currentObjectID;
@@ -31,11 +32,12 @@ struct World {
       toBeAdded.clear();
     }
 
-    std::chrono::duration<float> elapsed_seconds = std::chrono::steady_clock::now()-start;
+    std::chrono::duration<float> elapsed_seconds =
+        std::chrono::steady_clock::now() - start;
     float dt = elapsed_seconds.count();
     time += dt;
-    start=std::chrono::steady_clock::now();
-    for (auto& go : objects) {
+    start = std::chrono::steady_clock::now();
+    for (auto &go : objects) {
       go->update(dt);
     }
   }
@@ -51,13 +53,10 @@ struct World {
     }
   }
 
-  std::vector<std::shared_ptr<GameObject> > getObjectsInRadius(float x,
-                                                               float y,
-                                                               float radius);
+  std::vector<std::shared_ptr<GameObject>> getObjectsInRadius(float x, float y,
+                                                              float radius);
 
-  std::shared_ptr<Basic> getNearestUnit(float x,
-                                        float y,
-                                        float radius,
+  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius,
                                         unsigned team);
 
   std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);
