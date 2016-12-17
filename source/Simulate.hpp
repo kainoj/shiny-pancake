@@ -7,7 +7,7 @@
 
 void initWorld() {
   std::srand(time(nullptr));
-  World &world = World::getInstance();
+  World& world = World::getInstance();
 
   auto stats = std::make_shared<Stats>();
   world.spawn(stats);
@@ -33,13 +33,13 @@ void initWorld() {
   world.spawn(spawner4);
 }
 
-v8::Local<v8::Array> simulate(v8::Isolate *isolate) {
-  World &world = World::getInstance();
-  world.step();
+v8::Local<v8::Array> simulate(v8::Isolate* isolate, float dt) {
+  World& world = World::getInstance();
+  world.step(dt);
 
   v8::Local<v8::Array> data = v8::Array::New(isolate, world.objects.size());
   size_t index = 0;
-  for (auto &go : world.objects) {
+  for (auto& go : world.objects) {
     auto jsObject = go->getData(isolate);
     data->Set(index++, jsObject);
   }

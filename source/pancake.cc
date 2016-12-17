@@ -7,7 +7,7 @@
 void getData(const v8::FunctionCallbackInfo<v8::Value>& args) {
   v8::Isolate* isolate = args.GetIsolate();
 
-  auto result = simulate(isolate);
+  auto result = simulate(isolate, args[0]->NumberValue());
 
   args.GetReturnValue().Set(result);
 }

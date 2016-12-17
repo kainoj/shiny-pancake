@@ -2,10 +2,17 @@ const pancake = window.pancake = require('../build/Release/pancake');
 
 const root = document.querySelector('#world');
 
-requestAnimationFrame(function frame() {
+let prev = performance.now();
+let mult = 1;
+
+requestAnimationFrame(function frame(now) {
   requestAnimationFrame(frame);
-  draw(pancake.getData());
+  draw(pancake.getData(mult / (now - prev)));
+  prev = now;
 });
+
+document.addEventListener('click',       event => (event.preventDefault(), ++mult));
+document.addEventListener('contextmenu', event => (event.preventDefault(), --mult));
 
 function draw(data) {
   data.forEach(unit => updateCell(findCell(unit), unit));
