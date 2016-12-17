@@ -16,7 +16,7 @@ struct Bullet : public GameObject {
   float armorPen;
   float velX = 0.0, velY = 0.0;
   virtual void update(float dt);
-  virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
+  virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
     GameObject::getValue(isolate, object);
   }
 };

@@ -6,14 +6,13 @@
 #include "Bullet.hpp"
 #include "../consts.hpp"
 
-
-	// PATRZ DO costs.hpp
+// PATRZ DO costs.hpp
 struct Basic : public GameObject {
   float size = BasicSize;
-  float range = BasicRange;  
+  float range = BasicRange;
   float speed = BasicSpeed;
   float vx, vy;
-  float attackTimer = BasicAttackTimer; 
+  float attackTimer = BasicAttackTimer;
   float timeSinceLastAttack = BasicTimeSinceLastAttack;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
@@ -31,10 +30,6 @@ struct Basic : public GameObject {
       timeSinceLastAttack = timeSinceLastAttack - attackTimer;
       World &world = World::getInstance();
       world.spawn(std::make_shared<Bullet>(team, 200.0f, x, y, opponent->x,
-                                           opponent->y));
-      world.spawn(std::make_shared<Bullet>(team, 300.0f, x, y, opponent->x,
-                                           opponent->y));
-      world.spawn(std::make_shared<Bullet>(team, 350.0f, x, y, opponent->x,
                                            opponent->y));
     }
   };
