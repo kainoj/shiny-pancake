@@ -1,3 +1,4 @@
+#include "Basic.hpp"
 #include "Bullet.hpp"
 
 void Bullet::update(float dt) {
@@ -6,7 +7,7 @@ void Bullet::update(float dt) {
   World& world = World::getInstance();
   auto unit = world.collidesWithUnit(x, y, team);
   if (unit != nullptr) {
-    // unit->updateHP(damage);
-    hp = 0.0f;
+    unit->updateHP(damage);
+    hp = -1.0f;
   }
 }
