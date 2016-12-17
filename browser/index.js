@@ -7,7 +7,7 @@ let mult = 1;
 
 requestAnimationFrame(function frame(now) {
   requestAnimationFrame(frame);
-  draw(pancake.getData(mult / (now - prev) / 2));
+  draw(pancake.getData(mult / (now - prev) / 10));
   prev = now;
 });
 

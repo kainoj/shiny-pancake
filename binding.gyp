@@ -1,12 +1,12 @@
 {
   'targets': [
     {
-    	"cflags": ["-std=c++11"],
+    	"cflags": ["-std=c++11", "-O3"],
     	'cflags_cc+': ['-frtti'],
     	'cflags_cc!': ['-fno-rtti'],
       'target_name': 'pancake',
       'defines': [ 'V8_DEPRECATION_WARNINGS=1' ],
-      'sources': [ 
+      'sources': [
       	'source/pancake.cc',
       	'source/World.cpp',
       	'source/utilities.cpp',
