@@ -16,7 +16,11 @@ struct World {
   }
   std::queue<unsigned> freeIds;
   std::vector<std::shared_ptr<GameObject> > toBeAdded;
+<<<<<<< Updated upstream
   std::vector<std::shared_ptr<GameObject> > toBeRemoved;
+=======
+  std::vector<std::shared_ptr<GameObject> > toBeDeleted;
+>>>>>>> Stashed changes
   std::vector<std::shared_ptr<GameObject> > objects;
   int currentObjectID = 0;
   void spawn(std::shared_ptr<GameObject> go) {
@@ -43,5 +47,6 @@ struct World {
                                                                float y,
                                                                float radius);
 
-  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius);
+  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius,
+                                        unsigned team);
 };

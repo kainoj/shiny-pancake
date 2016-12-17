@@ -18,7 +18,7 @@ struct GameObject {
     return object;
   }
   virtual void update(float dt){};
-  virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
+  virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
     object->Set(v8::String::NewFromUtf8(isolate, "_id_"),
                 v8::Number::New(isolate, id));
     object->Set(v8::String::NewFromUtf8(isolate, "posx"),
