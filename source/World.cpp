@@ -35,25 +35,30 @@ std::shared_ptr<Basic> World::getNearestUnit(float x,
   return result;
 }
 
-std::shared_ptr<Basic> World::collidesWithUnit(float sx, float sy, float ex, float ey, unsigned team) {
+std::shared_ptr<Basic> World::collidesWithUnit(float sx,
+                                               float sy,
+                                               float ex,
+                                               float ey,
+                                               unsigned team) {
+  float dx = (sx - ex) / BulletResolution;
+  float dy = (sy - ey) / BulletResolution;
   for (auto& object : objects) {
     auto unit = std::dynamic_pointer_cast<Basic>(object);
     if (unit != nullptr) {
-      float disX = object->x - ex;
-      float disY = object->y - ey;
-      float dis = disX * disX + disY * disY;
-      if (dis < unit->size * unit->size && unit->team != team) {
-        return unit;
+      for (int it = BulletResolution; --it >= 0;) {
+        float disX = object->x - sx - dx * it;
+        float disY = object->y - sy - dy * it;
+        float dis = disX * disX + disY * disY;
+        if (dis < unit->size * unit->size && unit->team != team) {
+          return unit;
+        }
       }
     }
   }
   return nullptr;
 }
 
-void World::setDistressCall(float x,
-                             float y,
-                             float range,
-                             unsigned team) {
+void World::setDistressCall(float x, float y, float range, unsigned team) {
   float minDis = 1000000;
   std::shared_ptr<Basic> result = nullptr;
   for (auto& object : objects) {
@@ -62,16 +67,15 @@ void World::setDistressCall(float x,
       float disX = object->x - x;
       float disY = object->y - y;
       float dis = disX * disX + disY * disY;
-      if (dis < minDis && dis <= range * range && unit->team == team && unit->x != x && unit->y != y) {
+      if (dis < minDis && dis <= range * range && unit->team == team &&
+          unit->x != x && unit->y != y) {
         minDis = disX * disX + disY * disY;
         result = unit;
       }
     }
   }
-  if(result != nullptr)
-  {
-    if(result->type != "Spawner")
-    {
+  if (result != nullptr) {
+    if (result->type != "Spawner") {
       result->vx = x - result->x;
       result->vy = y - result->y;
     }

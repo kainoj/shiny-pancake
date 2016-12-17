@@ -1,4 +1,5 @@
 #pragma once
+
 //          BASIC
 constexpr float BasicSize = 10.0;
 constexpr float BasicRange = 70.0;
@@ -18,6 +19,7 @@ constexpr float TankSize = BasicSize * 1.5;
 constexpr float TankDmgReduce = 0.7;
 
 //          THE GAME
+constexpr unsigned BulletResolution = 10;
 constexpr float ScreenWidth = 1920.0;
 constexpr float ScreenHeigth = 1080.0;
 
