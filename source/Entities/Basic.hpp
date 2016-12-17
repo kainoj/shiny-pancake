@@ -28,7 +28,7 @@ struct Basic : public GameObject {
     timeSinceLastAttack += dt;
     if (timeSinceLastAttack > attackTimer) {
       timeSinceLastAttack = timeSinceLastAttack - attackTimer;
-      World& world = World::getInstance();
+      World &world = World::getInstance();
       world.spawn(std::make_shared<Bullet>(team, 200.0f, x, y, opponent->x,
                                            opponent->y));
     }
@@ -62,18 +62,18 @@ struct Basic : public GameObject {
         World::getInstance().getNearestUnit(x, y, range, team);
     if (opponent != nullptr) {
       // found an opponent
-      attack(opponent, 10, dt);  // RANDOM DMG
+      attack(opponent, 10, dt); // RANDOM DMG
     } else {
       // search for an opponent
       move(dt);
     }
   };
 
-  virtual void updateHP(float dmg) {  // dammage taken
+  virtual void updateHP(float dmg) { // dammage taken
     hp -= dmg;
   }
 
-  virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
+  virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
     GameObject::getValue(isolate, object);
   }
 };
