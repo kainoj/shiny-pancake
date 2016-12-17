@@ -9,12 +9,12 @@
 
 	// PATRZ DO costs.hpp
 struct Basic : public GameObject {
-  float size = Basic_size;
-  float range = Basic_range;  
-  float speed = Basic_speed;
+  float size = BasicSize;
+  float range = BasicRange;  
+  float speed = BasicSpeed;
   float vx, vy;
-  float attackTimer = AttackTimer; 
-  float timeSinceLastAttack = TimeSinceLastAttack;
+  float attackTimer = BasicAttackTimer; 
+  float timeSinceLastAttack = BasicTimeSinceLastAttack;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
     calculateSpeedVector();
@@ -42,16 +42,16 @@ struct Basic : public GameObject {
     if (x < size) {
       x = size;
       vx = -vx;
-    } else if (x > screenWidth - size) {
-      x = screenWidth - size;
+    } else if (x > ScreenWidth - size) {
+      x = ScreenWidth - size;
       vx = -vx;
     }
 
     if (y < size) {
       y = size;
       vy = -vy;
-    } else if (y > screenHeigth - size) {
-      y = screenHeigth - size;
+    } else if (y > ScreenHeigth - size) {
+      y = ScreenHeigth - size;
       vy = -vy;
     }
   };

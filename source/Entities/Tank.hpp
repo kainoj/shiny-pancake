@@ -6,10 +6,10 @@
 struct Tank : public Basic {
   Tank(unsigned team) : Basic(team) {
     type = "Tank";
-    range *= Tank_range;
-    speed *= Tank_speed;
+    range *= TankRange;
+    speed *= TankSpeed;
     calculateSpeedVector();
   }
 
-  virtual void updateHP(float dmg) { hp -= Tank_dmg_reduce * dmg; }
+  virtual void updateHP(float dmg) { hp -= TankDmgReduce * dmg; }
 };
