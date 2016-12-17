@@ -1,16 +1,16 @@
 #pragma once
-#include "Entities/Basic.hpp"
-#include "Entities/Tank.hpp"
+#include "Basic.hpp"
+#include "Tank.hpp"
 #include <memory>
 
-struct Spawner : public GameObject {
+struct Spawner : public Basic {
   float spawnTimer;
   float timeSinceLastSpawn;
   int spawnCount = 0;
   Spawner(float spawnTimer_, unsigned team)
-      : GameObject{"Spawner", team, 0, 0, 25},
-        spawnTimer{spawnTimer_},
-        timeSinceLastSpawn{0.0} {}
+      : Basic{team}, spawnTimer{spawnTimer_}, timeSinceLastSpawn{0.0} {
+    type = "Spawner";
+  }
   virtual std::shared_ptr<GameObject> getObject() {
     std::shared_ptr<GameObject> ball;
 
