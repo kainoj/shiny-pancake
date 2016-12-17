@@ -33,25 +33,29 @@ body {
     transform: rotateX(180deg);
 }
 
-#world .live .back,
-#world .live .cell {
+#world .back,
+#world .cell {
     stroke-width: 5;
     stroke-dasharray: 1000;
 }
 
-#world .live .back {
+#world .back {
     stroke-opacity: 0.25;
 }
 
-#world .live .range {
+#world .range {
     fill: transparent;
     stroke: gray;
-    stroke-width: 3;
+    stroke-width: 0;
     stroke-opacity: 0.5;
     stroke-dasharray: 10;
     stroke-dashoffset: 0;
 
     animation: 1s range infinite;
+}
+
+.debug #world .range {
+    stroke-width: 3;
 }
 
 #world .Bullet  .back, #world .Bullet  .cell {r: 2;}

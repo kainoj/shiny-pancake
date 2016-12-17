@@ -7,12 +7,13 @@ let mult = 0;
 
 requestAnimationFrame(function frame(now) {
   requestAnimationFrame(frame);
-  draw(pancake.getData(mult / (now - prev)));
+  draw(pancake.getData(mult / (now - prev) / 2));
   prev = now;
 });
 
 document.addEventListener('click',       event => (event.preventDefault(), ++mult));
 document.addEventListener('contextmenu', event => (event.preventDefault(), --mult));
+document.addEventListener('keydown',     event => (event.preventDefault(), document.body.classList.toggle('debug')));
 
 function draw(data) {
   data.forEach(unit => updateCell(findCell(unit), unit));
