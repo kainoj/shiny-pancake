@@ -4,14 +4,17 @@
 #include <cmath>
 #include "../World.hpp"
 #include "Bullet.hpp"
+#include "../consts.hpp"
 
+
+	// PATRZ DO costs.hpp
 struct Basic : public GameObject {
-  float size = 10.0;
-  float range = 70;  // TEMPORARY
-  float speed;
+  float size = Basic_size;
+  float range = Basic_range;  
+  float speed = Basic_speed;
   float vx, vy;
-  float attackTimer = 1.0;  // TEMPORARY
-  float timeSinceLastAttack = 0.0;
+  float attackTimer = AttackTimer; 
+  float timeSinceLastAttack = TimeSinceLastAttack;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
     speed = 250;
