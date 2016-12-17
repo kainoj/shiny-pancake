@@ -7,12 +7,22 @@
 
 struct Basic : public GameObject {
   float range = 70; // TEMPORARY
-  float speed = 250.0;
-  float vx = randRange(3,7) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
-  float vy = sqrtf(speed*speed - (vx*vx)) * (randRange(0, 1) ? 1 : -1);
+  float speed;
+  float vx, vy;
   float attackTimer = 1.0; // TEMPORARY
   float timeSinceLastAttack = 0.0;
-  Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {}
+
+  Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
+	speed = 250;
+	calculateSpeedVector();
+  }
+
+  void calculateSpeedVector() { 
+  	vx = randRange(3,7) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
+    vy = sqrtf(speed*speed - (vx*vx)) * (randRange(0, 1) ? 1 : -1);
+  }
+
+
   virtual void attack(std::shared_ptr<Basic> opponent, float dmg, float dt) {
     timeSinceLastAttack += dt;
     if (timeSinceLastAttack > attackTimer) {
