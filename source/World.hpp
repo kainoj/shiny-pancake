@@ -36,11 +36,12 @@ struct World {
   }
 
   void removeObjects() {
-    for (auto it = objects.begin(); it != objects.end(); it++) {
+    for (auto it = objects.begin(); it != objects.end();) {
       auto go = *it;
-      while (go->hp <= 0) {
+      if (go->hp <= 0) {
         it = objects.erase(it);
-        go = *it;
+      } else {
+        it++;
       }
     }
   }
