@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "install": "sh scripts/install.sh",
-    "start": "sh scripts/build.sh && electron . --enable-transparent-visuals --disable-gpu"
+    "start": "sh scripts/build.sh && electron . --enable-transparent-visuals"
   },
   "devDependencies": {
     "electron": "^1.4.1"

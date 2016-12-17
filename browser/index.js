@@ -3,7 +3,7 @@ const pancake = window.pancake = require('../build/Release/pancake');
 const root = document.querySelector('#world');
 
 let prev = performance.now();
-let mult = 0;
+let mult = 1;
 
 requestAnimationFrame(function frame(now) {
   requestAnimationFrame(frame);

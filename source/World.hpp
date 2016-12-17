@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.hpp"
+#include "Entities/Bullet.hpp"
 #include <memory>
 #include <list>
 #include <queue>
@@ -50,6 +51,10 @@ struct World {
                                                               float y,
                                                               float radius);
 
+  std::vector<std::shared_ptr<Bullet>> getBulletsInRadius(float x,
+                                                          float y,
+                                                          float range,
+                                                          unsigned team);
   std::shared_ptr<Basic> getNearestUnit(float x,
                                         float y,
                                         float radius,

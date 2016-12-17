@@ -19,7 +19,7 @@ constexpr float TankSize = BasicSize * 1.5;
 constexpr float TankDmgReduce = 0.7;
 
 //          THE GAME
-constexpr unsigned TimeResolution = 2;
+constexpr unsigned TimeResolution = 1;
 constexpr float ScreenWidth = 1920.0;
 constexpr float ScreenHeigth = 1080.0;
 
