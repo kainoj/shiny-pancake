@@ -1,6 +1,8 @@
 #pragma once
 #include "GameObject.hpp"
 #include <memory>
+#include <list>
+#include <queue>
 
 class Basic;
 
@@ -15,7 +17,7 @@ struct World {
   std::queue<unsigned> freeIds;
   std::vector<std::shared_ptr<GameObject> > toBeAdded;
   std::vector<std::shared_ptr<GameObject> > toBeRemoved;
-  std::list<std::shared_ptr<GameObject> > objects;
+  std::vector<std::shared_ptr<GameObject> > objects;
   int currentObjectID = 0;
   void spawn(std::shared_ptr<GameObject> go) {
     go->id = ++currentObjectID;
