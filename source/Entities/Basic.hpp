@@ -69,31 +69,29 @@ struct Basic : public GameObject {
 
   virtual void update(float dt) {
     World &world = World::getInstance();
-    if(state == State::Seeking)
+    auto enemy = world.getNearestUnit(x, y, range, team);
+    if(enemy != nullptr)
     {
-      auto enemy = world.getNearestUnit(x, y, range, team);
-      if(enemy != nullptr)
-      {
-        opponent = enemy;
-        state = State::Attack;
-      }
-      else
-      {
-        auto objects = world.getAlliedObjectsInRadius(x, y, communicationRange, team);
-        for(auto& go : objects){
-          if(go->state == State::Attack || go->state == State::Engaging)
-          {
-            opponent = go->opponent;
-            state = State::Engaging;
-            break;
-          }
-        }
-        if(opponent == nullptr && distance(vx, vy, 0, 0) < speed)
+      opponent = enemy;
+      state = State::Attack;
+    }
+    if(state == State::Seeking)
+    {  
+      auto objects = world.getAlliedObjectsInRadius(x, y, communicationRange, team);
+      for(auto& go : objects){
+        if(go->state == State::Attack || go->state == State::Engaging)
         {
-          calculateSpeedVector();
+          opponent = go->opponent;
+          state = State::Engaging;
+          break;
         }
-        move(dt);
       }
+      if(opponent == nullptr && distance(vx, vy, 0, 0) < speed)
+      {
+        calculateSpeedVector();
+      }
+      move(dt);
+    
     }
     if(state == State::Engaging)
     {
