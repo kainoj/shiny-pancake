@@ -10,4 +10,6 @@ struct Sniper : public Basic {
     range = SniperRange;
     attackTimer = SniperAttackTimer;
   }
+
+  virtual unsigned score() { return 3; }
 };
