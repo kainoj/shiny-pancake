@@ -7,6 +7,20 @@ body {
     font-size: 15px;
 }
 
+.stats {
+    position: fixed;
+
+    width: 100vw;
+    height: 30px;
+
+    left: 50%;
+    bottom: 0;
+
+    opacity: 0.75;
+
+    transform: translateX(-50%);
+}
+
 #world {
     position: fixed;
 

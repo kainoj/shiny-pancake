@@ -27,6 +27,17 @@ function findCell(unit) {
     return null;
   }
 
+  if (unit.type === 'Stats') {
+    const stats = document.createElement('div');
+
+    stats.id = unit._id_;
+    stats.classList.add('stats');
+
+    document.body.appendChild(stats);
+
+    return stats;
+  }
+
   const fresh = document.createElementNS('http://www.w3.org/2000/svg', 'g');
   const range =
       document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -60,6 +71,19 @@ function findCell(unit) {
 
 function updateCell(cell, unit) {
   if (cell === null) {
+    return;
+  }
+
+  if (unit.type === 'Stats') {
+    cell.style.background = `-webkit-linear-gradient(left,
+      rgb(20, 200, 200),
+      rgb(20, 200, 200) ${unit.stats.team1 * 100}%,
+      rgb(200, 200, 20),
+      rgb(200, 200, 20) ${(unit.stats.team1 + unit.stats.team2) * 100}%,
+      rgb(200, 20, 200),
+      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100}%,
+      rgb(100, 200, 20)
+    )`;
     return;
   }
 

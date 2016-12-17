@@ -19,6 +19,7 @@ struct GameObject {
     getValue(isolate, object);
     return object;
   }
+  virtual unsigned score() { return 0; }
   virtual void update(float dt){};
   virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
     object->Set(v8::String::NewFromUtf8(isolate, "_id_"),

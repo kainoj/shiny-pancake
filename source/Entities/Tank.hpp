@@ -11,5 +11,6 @@ struct Tank : public Basic {
     calculateSpeedVector();
   }
 
+  virtual unsigned score() { return 2; }
   virtual void updateHP(float dmg) { hp -= TankDmgReduce * dmg; }
 };
