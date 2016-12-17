@@ -9,5 +9,5 @@ struct Tank : public Basic {
     speed *= 0.7;
   }
 
-  virtual updateHP(float dmg) { hp -= 0.7 * dmg; }
+  virtual void updateHP(float dmg) { hp -= 0.7 * dmg; }
 };

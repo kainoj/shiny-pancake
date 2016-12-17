@@ -52,6 +52,12 @@ function findCell (unit) {
         unit1.setAttribute('r', 25);
         fresh.classList.add('live');
         fresh.appendChild(unit2);
+    } else if (unit.type === 'Tank') {
+        unit1.setAttribute('r', 15);
+        range.classList.add('range');
+        fresh.classList.add('live');
+        fresh.appendChild(unit2);
+        fresh.appendChild(range);
     }
 
     fresh.appendChild(unit1);
@@ -67,9 +73,11 @@ function updateCell (cell, unit) {
 
     cell.setAttribute('transform', `translate(${unit.posx}, ${unit.posy})`);
 
-    if (unit.type === 'Spawner') {
-        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 844)));
-    } else {
+    if (unit.type === 'Basic') {
         cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 937)));
+    } else if (unit.type === 'Spawner') {
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 844)));
+    } else if (unit.type === 'Tank') {
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 906)));
     }
 }

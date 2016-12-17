@@ -33,7 +33,7 @@ body {
 #world .live .range {
     fill: transparent;
     stroke: gray;
-    stroke-opacity: 0.3;
+    stroke-opacity: 0.4;
     stroke-dasharray: 10;
     stroke-dashoffset: 0;
 
@@ -42,6 +42,10 @@ body {
 
 #world .Basic.live .range {
     r: 70;
+}
+
+#world .Tank.live .range {
+    r: 35;
 }
 
 #world .team-1 .back, #world .team-1 .cell {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
