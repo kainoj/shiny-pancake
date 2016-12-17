@@ -19,15 +19,21 @@ body {
     transform: rotateX(180deg);
 }
 
+#world .live .back,
 #world .live .cell {
-    stroke-width: 30;
+    stroke-width: 5;
     stroke-dasharray: 1000;
+}
+
+#world .live .back {
+    r: 10;
+    stroke-opacity: 0.25;
 }
 
 #world .live .range {
     fill: transparent;
     stroke: gray;
-    stroke-opacity: 0.2;
+    stroke-opacity: 0.4;
     stroke-dasharray: 10;
     stroke-dashoffset: 0;
 
@@ -38,8 +44,14 @@ body {
     r: 70;
 }
 
-#world .team-1 .cell {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
-#world .team-2 .cell {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}
+#world .Tank.live .range {
+    r: 35;
+}
+
+#world .team-1 .back, #world .team-1 .cell {fill: rgb(20, 200, 200); stroke: rgb(75, 255, 255);}
+#world .team-2 .back, #world .team-2 .cell {fill: rgb(200, 200, 20); stroke: rgb(255, 255, 75);}
+#world .team-3 .back, #world .team-3 .cell {fill: rgb(200, 20, 200); stroke: rgb(255, 75, 255);}
+#world .team-4 .back, #world .team-4 .cell {fill: rgb(100, 200, 20); stroke: rgb(155, 255, 75);}
 
 @keyframes range {
     from {

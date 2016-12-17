@@ -17,6 +17,16 @@ void initWorld() {
   spawner2->x = world.worldSizeX - 50;
   spawner2->y = world.worldSizeY - 50;
   world.spawn(spawner2);
+
+  auto spawner3 = std::make_shared<Spawner>(1.0f, 3);
+  spawner3->x = world.worldSizeX - 50;
+  spawner3->y = 50;
+  world.spawn(spawner3);
+
+  auto spawner4 = std::make_shared<Spawner>(1.0f, 4);
+  spawner4->x = 50;
+  spawner4->y = world.worldSizeY - 50;
+  world.spawn(spawner4);
 }
 
 v8::Local<v8::Array> simulate(v8::Isolate* isolate) {

@@ -27,30 +27,40 @@ function findCell (unit) {
         return null;
     }
 
-    const fresh  = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-    const range  = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const fresh = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const range = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const unit1 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const unit2 = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
 
     fresh.id = unit._id_;
 
     fresh.classList.add(unit.type);
     fresh.classList.add('team-' + unit.team);
 
-    circle.classList.add('cell');
+    unit1.classList.add('cell');
+    unit2.classList.add('back');
 
     if (unit.type === 'Basic') {
-        circle.setAttribute('r', 10);
+        unit1.setAttribute('r', 10);
         range.classList.add('range');
         fresh.classList.add('live');
+        fresh.appendChild(unit2);
         fresh.appendChild(range);
     } else if (unit.type === 'Bullet') {
-        circle.setAttribute('r', 2);
+        unit1.setAttribute('r', 2);
     } else if (unit.type === 'Spawner') {
-        circle.setAttribute('r', 25);
+        unit1.setAttribute('r', 25);
         fresh.classList.add('live');
+        fresh.appendChild(unit2);
+    } else if (unit.type === 'Tank') {
+        unit1.setAttribute('r', 15);
+        range.classList.add('range');
+        fresh.classList.add('live');
+        fresh.appendChild(unit2);
+        fresh.appendChild(range);
     }
 
-    fresh.appendChild(circle);
+    fresh.appendChild(unit1);
     root.appendChild(fresh);
 
     return fresh;
@@ -63,11 +73,11 @@ function updateCell (cell, unit) {
 
     cell.setAttribute('transform', `translate(${unit.posx}, ${unit.posy})`);
 
-    if (unit.type === 'Spawner') {
-        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 844)));
-    } else {
-        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(100 - unit._hp_ / 100 * (1000 - 937)));
+    if (unit.type === 'Basic') {
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 937)));
+    } else if (unit.type === 'Spawner') {
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 844)));
+    } else if (unit.type === 'Tank') {
+        cell.querySelector('.cell').setAttribute('stroke-dashoffset', ~~(1000 - unit._hp_ / 100 * (1000 - 906)));
     }
-
-    cell.setAttribute('HP', unit._hp_);
 }
