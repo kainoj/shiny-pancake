@@ -34,30 +34,19 @@ function findCell (unit) {
 
     fresh.id = unit._id_;
 
-    fresh.classList.add(unit.type);
     fresh.classList.add('team-' + unit.team);
-
+    fresh.classList.add(unit.type);
+    range.classList.add('range');
     unit1.classList.add('cell');
     unit2.classList.add('back');
 
-    if (unit.type === 'Basic') {
-        unit1.setAttribute('r', 10);
-        range.classList.add('range');
-        fresh.classList.add('live');
+    if (unit.type !== 'Bullet') {
         fresh.appendChild(unit2);
-        fresh.appendChild(range);
-    } else if (unit.type === 'Bullet') {
-        unit1.setAttribute('r', 2);
-    } else if (unit.type === 'Spawner') {
-        unit1.setAttribute('r', 25);
         fresh.classList.add('live');
-        fresh.appendChild(unit2);
-    } else if (unit.type === 'Tank') {
-        unit1.setAttribute('r', 15);
-        range.classList.add('range');
-        fresh.classList.add('live');
-        fresh.appendChild(unit2);
-        fresh.appendChild(range);
+
+        if (unit.type !== 'Spawner') {
+            fresh.appendChild(range);
+        }
     }
 
     fresh.appendChild(unit1);
