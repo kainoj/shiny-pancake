@@ -9,7 +9,8 @@
       'sources': [ 
       	'source/pancake.cc',
       	'source/World.cpp',
-      	'source/utilities.cpp'
+      	'source/utilities.cpp',
+      	'source/Entities/Bullet.cpp'
        ]
     }
   ]

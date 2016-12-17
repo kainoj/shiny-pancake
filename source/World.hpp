@@ -54,4 +54,6 @@ struct World {
 
   std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius,
                                         unsigned team);
+
+  std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);
 };

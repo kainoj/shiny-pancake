@@ -1,11 +1,14 @@
 #pragma once
 
+#include <memory>
 #include <cmath>
 #include "../World.hpp"
+#include "Bullet.hpp"
 
 
 
 struct Basic : public GameObject {
+	float size = 10.0;
   float range = 70; // TEMPORARY
   float speed = 250.0;
   float vx = randRange(0,10) * (speed/10.0) * (randRange(0, 1) ? 1 : -1);
@@ -17,6 +20,8 @@ struct Basic : public GameObject {
     timeSinceLastAttack += dt;
     if (timeSinceLastAttack > attackTimer) {
       timeSinceLastAttack = timeSinceLastAttack - attackTimer;
+      World& world = World::getInstance();
+      world.spawn(std::make_shared<Bullet>(team, opponent->x, opponent->y, 1000.0f));
       opponent->updateHP(dmg); // deal dmg to opponent
     }
     // remove from board
