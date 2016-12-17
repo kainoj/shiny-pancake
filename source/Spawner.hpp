@@ -6,10 +6,10 @@ struct Spawner : public GameObject {
   float spawnTimer;
   float timeSinceLastSpawn;
   int spawnCount = 0;
-  Spawner(float spawnTimer_, int team)
+  Spawner(float spawnTimer_, unsigned team)
       : GameObject{"Spawner", team, 0, 0, 25},
-        timeSinceLastSpawn{0.0},
-        spawnTimer{spawnTimer_} {}
+        spawnTimer{spawnTimer_},
+        timeSinceLastSpawn{0.0} {}
   virtual std::shared_ptr<GameObject> getObject() {
     auto ball = std::make_shared<Basic>(team);
     ball->x = x + rand() % 10;

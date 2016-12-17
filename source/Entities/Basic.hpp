@@ -6,9 +6,9 @@ struct Basic : public GameObject {
   float hp = 100;
   float vx = randRange(5,10) * 20 * (randRange(0, 1) ? 1 : -1);
   float vy = randRange(5,10) * 20 * (randRange(0, 1) ? 1 : -1);
-  Basic(int team) : GameObject{"Basic", team, 0, 0, 10} {}
+  Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {}
   virtual void update(float dt) {
-    x += vx * dt; 
+    x += vx * dt;
     y += vy * dt;
 
     if (x < size) {

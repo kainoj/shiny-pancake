@@ -6,12 +6,12 @@
 struct GameObject {
   float x;
   float y;
-  int size; 
-  unsigned team;
   std::string type;
   unsigned id;
-  GameObject(std::string type_, unsigned team_, float x_, float y_, int size_)
-      : x(x_), y{y_}, size{size_}, type{type_}, team{team_}, id{0} {}
+  unsigned size;
+  unsigned team;
+  GameObject(std::string type_, unsigned team_, float x_, float y_, unsigned size_)
+      : x(x_), y{y_}, type{type_}, id{0}, size{size_}, team{team_} {}
   v8::Local<v8::Object> getData(v8::Isolate* isolate) {
     v8::Local<v8::Object> object = v8::Object::New(isolate);
     getValue(isolate, object);
