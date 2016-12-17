@@ -31,28 +31,27 @@ struct World {
     float dt = 1.0f / 60;
     time += dt;
     for (auto& go : objects) {
-        go->update(dt);
+      go->update(dt);
     }
   }
 
- 	void removeObjects()
- 	{
- 		for (auto it = objects.begin(); it != objects.end(); it++)
- 		{
- 			auto go = *it;
- 			while(go->hp <= 0)
- 			{
- 				it = objects.erase(it);
- 				go = *it;
- 			}
- 		}
- 	}
+  void removeObjects() {
+    for (auto it = objects.begin(); it != objects.end(); it++) {
+      auto go = *it;
+      while (go->hp <= 0) {
+        it = objects.erase(it);
+        go = *it;
+      }
+    }
+  }
 
   std::vector<std::shared_ptr<GameObject> > getObjectsInRadius(float x,
                                                                float y,
                                                                float radius);
 
-  std::shared_ptr<Basic> getNearestUnit(float x, float y, float radius,
+  std::shared_ptr<Basic> getNearestUnit(float x,
+                                        float y,
+                                        float radius,
                                         unsigned team);
 
   std::shared_ptr<Basic> collidesWithUnit(float x, float y, unsigned);

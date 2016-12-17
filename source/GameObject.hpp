@@ -11,7 +11,11 @@ struct GameObject {
   unsigned size;
   unsigned team;
   float hp = 100.0;
-  GameObject(std::string type_, unsigned team_, float x_, float y_, unsigned size_)
+  GameObject(std::string type_,
+             unsigned team_,
+             float x_,
+             float y_,
+             unsigned size_)
       : x(x_), y{y_}, type{type_}, id{0}, size{size_}, team{team_} {}
   v8::Local<v8::Object> getData(v8::Isolate* isolate) {
     v8::Local<v8::Object> object = v8::Object::New(isolate);
@@ -19,7 +23,7 @@ struct GameObject {
     return object;
   }
   virtual void update(float dt){};
-  virtual void getValue(v8::Isolate *isolate, v8::Local<v8::Object> object) {
+  virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
     object->Set(v8::String::NewFromUtf8(isolate, "_id_"),
                 v8::Number::New(isolate, id));
     object->Set(v8::String::NewFromUtf8(isolate, "posx"),

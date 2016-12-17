@@ -3,7 +3,6 @@
 #include "Entities/Basic.hpp"
 #include <memory>
 
-
 void initWorld() {
   std::srand(time(nullptr));
   World& world = World::getInstance();

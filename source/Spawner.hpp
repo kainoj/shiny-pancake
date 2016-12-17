@@ -13,7 +13,7 @@ struct Spawner : public GameObject {
         timeSinceLastSpawn{0.0} {}
   virtual std::shared_ptr<GameObject> getObject() {
     std::shared_ptr<GameObject> ball;
-    
+
     if (randRange(0, 10) >= 5) {
       ball = std::make_shared<Tank>(team);
     } else {
