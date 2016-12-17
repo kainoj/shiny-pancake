@@ -1,4 +1,4 @@
-
+#pragma once
 //			BASIC
 constexpr float Basic_size  = 10.0;
 constexpr float Basic_range	= 70.0;
