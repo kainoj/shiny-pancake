@@ -69,7 +69,5 @@ struct Basic : public GameObject {
   }
   virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
     GameObject::getValue(isolate, object);
-    object->Set(v8::String::NewFromUtf8(isolate, "_hp_"),
-                v8::Number::New(isolate, hp));
   }
 };

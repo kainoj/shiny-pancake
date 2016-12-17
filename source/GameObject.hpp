@@ -26,6 +26,8 @@ struct GameObject {
   virtual void getValue(v8::Isolate* isolate, v8::Local<v8::Object> object) {
     object->Set(v8::String::NewFromUtf8(isolate, "_id_"),
                 v8::Number::New(isolate, id));
+    object->Set(v8::String::NewFromUtf8(isolate, "_hp_"),
+                v8::Number::New(isolate, hp));
     object->Set(v8::String::NewFromUtf8(isolate, "posx"),
                 v8::Number::New(isolate, static_cast<int>(x)));
     object->Set(v8::String::NewFromUtf8(isolate, "posy"),
