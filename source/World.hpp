@@ -4,10 +4,12 @@
 #include <list>
 #include <queue>
 #include <algorithm>
+#include <chrono>
 
 class Basic;
 
 struct World {
+  std::chrono::time_point<std::chrono::steady_clock> start = std::chrono::steady_clock::now();
   float worldSizeX = 1920.0;
   float worldSizeY = 1080.0;
   float time = 0.0;
@@ -28,8 +30,11 @@ struct World {
       objects.insert(objects.end(), toBeAdded.begin(), toBeAdded.end());
       toBeAdded.clear();
     }
-    float dt = 1.0f / 60;
+
+    std::chrono::duration<float> elapsed_seconds = std::chrono::steady_clock::now()-start;
+    float dt = elapsed_seconds.count();
     time += dt;
+    start=std::chrono::steady_clock::now();
     for (auto& go : objects) {
       go->update(dt);
     }
