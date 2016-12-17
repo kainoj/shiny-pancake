@@ -84,11 +84,12 @@ function updateCell(cell, unit) {
   if (unit.type === 'Stats') {
     cell.style.background = `-webkit-linear-gradient(left,
       rgb(20, 200, 200),
-      rgb(20, 200, 200) ${unit.stats.team1 * 100}%,
-      rgb(200, 200, 20),
-      rgb(200, 200, 20) ${(unit.stats.team1 + unit.stats.team2) * 100}%,
-      rgb(200, 20, 200),
-      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100}%,
+      rgb(20, 200, 200) ${unit.stats.team1 * 100 - 1}%,
+      rgb(200, 200, 20) ${unit.stats.team1 * 100 + 1}%,
+      rgb(200, 200, 20) ${(unit.stats.team1 + unit.stats.team2) * 100 - 1}%,
+      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2) * 100 + 1}%,
+      rgb(200, 20, 200) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 - 1}%,
+      rgb(100, 200, 20) ${(unit.stats.team1 + unit.stats.team2 + unit.stats.team3) * 100 + 1}%,
       rgb(100, 200, 20)
     )`;
     return;
