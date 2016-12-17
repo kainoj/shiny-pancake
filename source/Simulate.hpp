@@ -2,8 +2,7 @@
 #include "Spawner.hpp"
 #include "Entities/Basic.hpp"
 #include <memory>
-#include <cstdlib>
-#include <ctime>
+
 
 void initWorld() {
   std::srand(time(nullptr));
