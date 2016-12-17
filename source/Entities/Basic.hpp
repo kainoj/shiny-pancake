@@ -17,7 +17,6 @@ struct Basic : public GameObject {
   float timeSinceLastAttack = TimeSinceLastAttack;
 
   Basic(unsigned team) : GameObject{"Basic", team, 0, 0, 10} {
-    speed = 250;
     calculateSpeedVector();
   }
 
@@ -43,16 +42,16 @@ struct Basic : public GameObject {
     if (x < size) {
       x = size;
       vx = -vx;
-    } else if (x > 1920 - size) {
-      x = 1920 - size;
+    } else if (x > screenWidth - size) {
+      x = screenWidth - size;
       vx = -vx;
     }
 
     if (y < size) {
       y = size;
       vy = -vy;
-    } else if (y > 1080 - size) {
-      y = 1080 - size;
+    } else if (y > screenHeigth - size) {
+      y = screenHeigth - size;
       vy = -vy;
     }
   };
