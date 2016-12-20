@@ -4,23 +4,12 @@
 $ npm install
 $ npm start
 
-# CTRL+R - refresh
 ```
 
 
+## Keyboard shortcuts
 
-
-
-#Bazowe wartości
-* hp    := h
-* range := r
-
-#Jednostki
-
-Tanker
-* hp:    4h
-* range: r 
-
-Fighter
-* hp:    h
-* range: 2r
+* `J` speed up
+* `K` slow down
+* `D` toggle range animation
+* `CTRL + R` refresh
